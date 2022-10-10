@@ -1,0 +1,36 @@
+<body>
+  <div class="container">
+    <div style="text-align:center; margin-top: 20px;">
+      <h4>
+        CRUD operations with Azure Blob Storage, .NET 6 and Angular 14
+      </h4>
+    </div>
+
+    <div class="blobstorage-section">
+      <i class="fa fa-plus fa-2x" style="cursor: pointer; color: darkslateblue;" (click)="onClick()"></i>&nbsp; Add new
+      files to Blob
+      <input type="file" #fileUpload id="fileUpload" name="fileUpload" style="display:none;"
+        (click)="fileUpload.value = ''" />
+      <table style="margin-top: 20px;">
+        <tr>
+          <th class="column1">Uploaded Files</th>
+          <th class="column2" style="text-align:center;">Download</th>
+          <th class="column3" style="text-align:center;">Delete</th>
+        </tr>
+        <tr *ngFor="let file of files">
+          <td class="column1">{{file}}</td>
+          <td class="column2" style="text-align:center;cursor: pointer;" (click)="downloadFile(file)"><i
+              class="fa fa-download"></i></td>
+          <td class="column3" style="text-align:center;" (click)="deleteFile(file)">
+            <img alt="Group Audit" src="../assets/icon-download.png" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="file-loader" *ngIf="showLoader">
+      <div class="upload-loader">
+        <div class="loader"></div>
+      </div>
+    </div>
+  </div>
+</body>
